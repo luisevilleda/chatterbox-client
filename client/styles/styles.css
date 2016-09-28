@@ -18,6 +18,12 @@ body {
   font-size: 1.2em;
 }
 
+img {
+  overflow: hidden;
+  width: 150px;
+  position: fixed;
+}
+
 
 
 #main, #chats {

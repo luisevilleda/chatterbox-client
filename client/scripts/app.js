@@ -20,7 +20,6 @@ app.fetchSuccess = function fetchSuccess(data) {
     //look at message.roomname
     app.renderRoom(message.roomname);
   }); 
-  // }
   app.highlightFriends();
 };
 
@@ -34,17 +33,15 @@ app.init = function init() {
 
 app.handleTabClick = function handleTabClick(event) {  
   var $anchor = $(event.target);
-  // console.log($anchor);
   var clickedRoom = $anchor.parent().data('name');
+
   if (app.room === clickedRoom) {
     return;
   }
   app.room = clickedRoom;
-  //updates dropdown
   $('#roomSelect').val(app.room);
   app.addTab();
   app.refresh();
-  $('.nav-tabs').find("[data-name='" + app.room + "']").tab('show');
 
 };
 
@@ -144,7 +141,7 @@ app.roomChange = function roomChange() {
 
 app.addTab = function addTab() {
   if (app.tabs[app.room]) {
-    $('.nav-tabs').find("[data-name='" + app.room + "']").tab('show');
+    // $('.nav-tabs').find("[data-name='" + app.room + "']").tab('show');
     return;
   }
   
@@ -202,8 +199,7 @@ app.getQueryVariable = function getQueryVariable(variable) {
 
 app.refresh = function refresh() {
   app.clearMessages();
-  var param = app.getRoomParameter();
-  app.fetch(param);
+  app.fetch();
 };
 
 app.getRoomParameter = function getRoomParameter() {
@@ -267,9 +263,6 @@ app.militaryHourTo12 = function militaryHourTo12(hour, minutes) {
   }
   return hour + ':' + minutes + suffix;
 };
-
-
-
 
 
 
